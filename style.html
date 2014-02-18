@@ -2,15 +2,22 @@
 
 <html>
 <head>
+	
+	<meta charset="UTF-8" />
+	
+	<link rel="stylesheet" type="text/css" href="main.css">
+
 	<style type="text/css">
 		
 		div{
 			color: red
 		}
 
-		.color{
-			color: orange
+		pre.first:first-line{
+			color: orange;
+			font-variant: small-caps;
 		}
+		
 		#z1{
 			color: green
 		}
@@ -19,25 +26,32 @@
 		Style
 	</title>
 </head>
+
 <body>
+
+<pre class="first">
+Applying style to an individual element.
+</pre>
+
 <p style="color:blue">
-	Applying style to an individual element.
-</p>
-
-<p class="color">
-	Appying style to an element using class.
+	Appying style to an 
+	<img src="star.png" 
+	style="display: block">
+	element using class.
 </p>
 
 <div>
-	Applying style to all the elements in the document.
-</div>
+	Applying style to all <img src="star.png">the elements in the document.
+	Div inside a div is allowed but paragraph inside a paragraph is not allowed.
+	<div>
+		I am second div element.
+	</div>
 
-<div>
-	I am second div element.
 </div>
 <pre id="z1">
 	Applying style to an element using its id.
 </pre>
 
 </body>
+
 </html>
