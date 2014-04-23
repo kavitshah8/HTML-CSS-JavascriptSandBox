@@ -12,7 +12,7 @@ var allNodes = {
         D : { "color": "WHITE" , "value": 20, "neighbours": ["A","E"] },
         E : { "color": "WHITE" , "value": 90, "neighbours": ["D","B","F"] },
         F : { "color": "WHITE" , "value": 100, "neighbours": ["E"] }
-}
+};
  
 function getMaxValue(root){
     max = 0;
