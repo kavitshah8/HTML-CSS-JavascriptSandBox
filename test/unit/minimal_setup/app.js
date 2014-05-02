@@ -1,65 +1,60 @@
 var graph = {
 
-    A : { "value": 20, "neighbours": ["D","B"] },
-    B : { "value": 10, "neighbours": ["A","E","C"] },
+    A : { "value": 10, "neighbours": ["D","B"] },
+    B : { "value": 20, "neighbours": ["A","E","C"] },
     C : { "value": 30, "neighbours": ["B"] },
-    D : { "value": 20, "neighbours": ["A","E"] },
-    E : { "value": 90, "neighbours": ["D","B","F"] },
-    F : { "value": 100, "neighbours": ["E"] }
+    D : { "value": 40, "neighbours": ["A","E"] },
+    E : { "value": 50, "neighbours": ["D","B","F"] },
+    F : { "value": 60, "neighbours": ["E"] }
 
 };
 
-// Implements Breadth First Search Algorithm (with necessary modifications) 
-// It assumes that it has Read Only Rights for the Global Objects
-// Time complexity of algorithm is Big-O (# Edges + # Vertices)
+// Mimicks Depth First Search Algorithm for an un-directed graph for given problem
 
 function dfs(){
-    
+
     var visitedNodes = {};
 
-    var max = 0;
-    
+    var total = 0;
+
     for ( var key in graph ) {
 
         if( !visitedNodes[key] ){
-                
-            max = dfsVisit( key, visitedNodes, max );
-    
+
+            total = dfsVisit( key, visitedNodes, total );
+
         };
-    
-    };
-    
-    return max;
-};  
-
-function dfsVisit( key, visitedNodes, max ){
-
-    if ( graph[key].value > max) { 
-
-        max = graph[key].value; 
 
     };
-        
-    visitedNodes[key] = true;
 
-    for ( var i = 0; i < graph[key]['neighbours'].length; i++ ) {
-            
-        var v = graph[key]['neighbours'][i];
-            
-        if ( graph[v].value > max) { 
-        
-            max = graph[v].value; 
-        
-        };
-             
+    return total;
+};
+
+function dfsVisit( key, visitedNodes, total ){
+
+    var total = total;
+
+    if( !visitedNodes[key] ){
+
+        total += graph[key].value;
+        visitedNodes[key] = true;
+    
+    };
+
+    if ( graph[key]['neighbours'][0] !== 'undefined' ) {
+
+        var v = graph[key]['neighbours'][0];
+
         if( !visitedNodes[v] ){
 
-                dfsVisit( v, visitedNodes, max );
-        
+            total += graph[v].value;
+            visitedNodes[v] = true;
+            dfsVisit( v, visitedNodes, total );
+
         };
 
-        return max;
+    };
 
-    };  
+    return total;
 
 };
